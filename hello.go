@@ -26,6 +26,8 @@ func main() {
 	Migrate(db)
 	defer db.Close()
 
+	gin.SetMode(gin.ReleaseMode)
+
 	r := gin.Default()
 
 	v1 := r.Group("/api")
@@ -69,5 +71,5 @@ func main() {
 	//}).First(&userAA)
 	//fmt.Println(userAA)
 
-	r.Run() // listen and serve on 0.0.0.0:8080
+	r.Run(":8000") // listen and serve on 0.0.0.0:8080
 }
